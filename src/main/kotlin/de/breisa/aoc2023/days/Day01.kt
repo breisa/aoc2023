@@ -5,16 +5,15 @@ import de.breisa.aoc2023.core.getResourceAsText
 /**
  * https://adventofcode.com/2023/day/1
  */
-class Day01 {
-
-    private val examplePuzzle1 = """
+class Day01: Day(
+    number = 1,
+    firstExample = """
         1abc2
         pqr3stu8vwx
         a1b2c3d4e5f
         treb7uchet
-    """.trimIndent()
-
-    private val examplePuzzle2 = """
+    """.trimIndent(),
+    secondExample = """
         two1nine
         eightwothree
         abcone2threexyz
@@ -22,26 +21,17 @@ class Day01 {
         4nineeightseven2
         zoneight234
         7pqrstsixteen
-    """.trimIndent()
+    """.trimIndent(),
+    actualPuzzle = getResourceAsText("/day01/puzzle.txt")
+) {
 
-    private val actualPuzzle = getResourceAsText("/day01/puzzle.txt")
-
-    fun solvePuzzles() {
-        println("solving part 1:")
-        println("the example solution is ${solveFirstPart(examplePuzzle1)}")
-        println("the first solution of the actual puzzle is ${solveFirstPart(actualPuzzle)}")
-        println("solving part2:")
-        println("the example solution is ${solveSecondPart(examplePuzzle2)}")
-        println("the second solution of the actual puzzle is ${solveSecondPart(actualPuzzle)}")
-    }
-
-    private fun solveFirstPart(puzzle: String): Int = puzzle
+    override fun solveFirstPart(puzzle: String): Int = puzzle
         .lines()
         .map { it.replace(Regex("\\D"), "") }
         .filterNot { it == "" }
         .sumOf { (it.first().digitToInt() * 10) + it.last().digitToInt() }
 
-    private fun solveSecondPart(puzzle: String): Int = puzzle
+    override fun solveSecondPart(puzzle: String): Int = puzzle
         .lines()
         .filterNot { it == "" }
         .sumOf { solveSecondPartLine(it) }
