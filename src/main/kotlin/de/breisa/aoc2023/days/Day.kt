@@ -3,7 +3,7 @@ package de.breisa.aoc2023.days
 abstract class Day(
     val number: Int,
     val firstExample: String,
-    val secondExample: String,
+    val secondExample: String = firstExample,
     val actualPuzzle: String
 ) {
 
