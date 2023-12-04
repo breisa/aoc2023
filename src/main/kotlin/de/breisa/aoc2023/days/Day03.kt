@@ -88,12 +88,12 @@ class Day03: Day(
             p.copy(x = p.x + 1, y = p.y + 1)
         ).filter { isOnGrid(it) }
 
-        fun getNumberStart(somwhereInNumber: Position): Position {
-            var start = somwhereInNumber.x
-            while (start > 0 && grid[somwhereInNumber.y][start-1].isDigit()) {
+        fun getNumberStart(somewhereInNumber: Position): Position {
+            var start = somewhereInNumber.x
+            while (start > 0 && grid[somewhereInNumber.y][start-1].isDigit()) {
                 start--
             }
-            return somwhereInNumber.copy(x = start)
+            return somewhereInNumber.copy(x = start)
         }
 
         fun getNumberAt(position: Position) =
