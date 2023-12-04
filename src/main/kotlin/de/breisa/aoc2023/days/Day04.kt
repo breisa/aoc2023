@@ -2,6 +2,7 @@ package de.breisa.aoc2023.days
 
 import de.breisa.aoc2023.core.getResourceAsText
 import kotlin.math.pow
+import kotlin.time.measureTimedValue
 
 class Day04: Day(
     number = 4,
@@ -22,6 +23,10 @@ class Day04: Day(
         }.sumOf { 2.0.pow(it - 1).toInt() }
 
     override fun solveSecondPart(puzzle: String): Int {
+        return secondFast(puzzle)
+    }
+
+    private fun secondNaive(puzzle: String): Int {
         val cards = parseScratchCards(puzzle).sortedBy { it.id }.toMutableList()
         var i = 0
         do {
@@ -29,6 +34,20 @@ class Day04: Day(
             cards.addAll(cards.slice(it.id ..< it.id + it.countCorrectNumbers()))
         } while(++i < cards.size)
         return i
+    }
+
+    /**
+     * each card can only influence the amount of cards with higher ids
+     * therefore, when traversing low to high the amount of the current card is already known
+     * each correct number on the current card increases the amount of the corresponding card by exactly the amount of the current card
+     * => 1000x speedup
+     */
+    private fun secondFast(puzzle: String): Int {
+        val cards = parseScratchCards(puzzle).sortedBy { it.id }
+        cards.forEachIndexed { index, card ->
+            (card.id ..< card.id + card.countCorrectNumbers()).forEach { cards[it].amount += card.amount }
+        }
+        return cards.sumOf { it.amount }
     }
 
     private fun parseScratchCards(puzzle: String): List<ScratchCard> {
@@ -44,7 +63,7 @@ class Day04: Day(
 
     private fun String.toIntList(): List<Int> = this.trim().split(Regex(" +")).map(String::toInt)
 
-    class ScratchCard(val id: Int, val winningNumbers: List<Int>, val cardNumbers: List<Int>, var factor: Int = 1) {
+    class ScratchCard(val id: Int, val winningNumbers: List<Int>, val cardNumbers: List<Int>, var amount: Int = 1) {
         fun countCorrectNumbers() = cardNumbers.count { it in winningNumbers }
     }
 
