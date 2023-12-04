@@ -2,8 +2,10 @@ package de.breisa.aoc2023.days
 
 import de.breisa.aoc2023.core.getResourceAsText
 import kotlin.math.pow
-import kotlin.time.measureTimedValue
 
+/**
+ * https://adventofcode.com/2023/day/4
+ */
 class Day04: Day(
     number = 4,
     firstExample = """
