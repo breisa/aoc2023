@@ -1,6 +1,10 @@
 package de.breisa.aoc2023.days
 
 import de.breisa.aoc2023.core.getResourceAsText
+import kotlin.math.ceil
+import kotlin.math.floor
+import kotlin.math.roundToInt
+import kotlin.math.sqrt
 
 /**
  * https://adventofcode.com/2023/day/6
@@ -16,7 +20,21 @@ class Day06: Day(
 
     override fun solveFirstPart(puzzle: String) = parseRaces(puzzle).map { countWinningRaces(it) }.reduce(Int::times)
 
-    override fun solveSecondPart(puzzle: String) = countWinningRaces(parseLongRace(puzzle))
+    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle)
+
+    private fun solveSecondPartFast(puzzle: String): Int {
+        val race = parseLongRace(puzzle)
+        // f(x) = (race.time - x) * x - race.distance = -1 * (x*x) + 1 * (race.time * x) - race.distance
+        val a = -1.0
+        val b = race.time.toDouble()
+        val c = -1.0 * race.distance.toDouble()
+        val x1 = ( -1.0*b + sqrt(b*b - 4.0 * a * c) ) / 2.0 * a
+        val x2 = ( -1.0*b - sqrt(b*b - 4.0 * a * c) ) / 2.0 * a
+        val winningRaces = (floor(x2) - ceil(x1) + 1.0).roundToInt()
+        return winningRaces
+    }
+
+    private fun solveSecondPartNaive(puzzle: String) = countWinningRaces(parseLongRace(puzzle))
 
     private fun countWinningRaces(r: Race) = (0..r.time).count { holdTime -> distance(holdTime, r.time) > r.distance }
 
