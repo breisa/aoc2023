@@ -8,6 +8,7 @@ Solutions:
 [03](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day03.kt)
 [04](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day04.kt)
 [05](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day05.kt)
+[06](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day06.kt)
 
 
 ```

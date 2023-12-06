@@ -3,6 +3,9 @@ package de.breisa.aoc2023.days
 import de.breisa.aoc2023.core.getResourceAsText
 import kotlin.math.min
 
+/**
+ * https://adventofcode.com/2023/day/5
+ */
 class Day05: Day(
     number = 5,
     firstExample = """
