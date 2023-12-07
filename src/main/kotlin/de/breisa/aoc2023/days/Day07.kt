@@ -2,6 +2,9 @@ package de.breisa.aoc2023.days
 
 import de.breisa.aoc2023.core.getResourceAsText
 
+/**
+ * https://adventofcode.com/2023/day/7
+ */
 class Day07: Day(
     number = 7,
     firstExample = """
