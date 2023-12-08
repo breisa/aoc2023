@@ -10,16 +10,18 @@ abstract class Day<T>(
 ) {
 
     fun solvePuzzles() {
-        println("running day number $number...")
-        println("solving part 1:")
-        println("the example solution is ${solveFirstPart(firstExample)}")
+        prettyPrintln("running day number $number...")
+        prettyPrintln("solving part 1:")
+        prettyPrintln("the example solution is ${solveFirstPart(firstExample)}")
         val (firstActualSolution, firstDuration) = measureTimedValue { solveFirstPart(actualPuzzle) }
-        println("the first solution of the actual puzzle is $firstActualSolution ($firstDuration)")
-        println("solving part2:")
-        println("the example solution is ${solveSecondPart(secondExample)}")
+        prettyPrintln("the first solution of the actual puzzle is $firstActualSolution ($firstDuration)")
+        prettyPrintln("solving part2:")
+        prettyPrintln("the example solution is ${solveSecondPart(secondExample)}")
         val (secondActualSolution, secondDuration) = measureTimedValue { solveSecondPart(actualPuzzle) }
-        println("the second solution of the actual puzzle is $secondActualSolution ($secondDuration)")
+        prettyPrintln("the second solution of the actual puzzle is $secondActualSolution ($secondDuration)\n")
     }
+
+    private fun prettyPrintln(text: String) = println("\uD83C\uDF84 $text")
 
     abstract fun solveFirstPart(puzzle: String): T
 
