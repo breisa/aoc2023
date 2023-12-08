@@ -6,7 +6,7 @@ import kotlin.math.min
 /**
  * https://adventofcode.com/2023/day/5
  */
-class Day05: Day(
+class Day05: Day<Int>(
     number = 5,
     firstExample = """
         seeds: 79 14 55 13
@@ -46,14 +46,14 @@ class Day05: Day(
     actualPuzzle = getResourceAsText("/day05/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String): Long {
+    override fun solveFirstPart(puzzle: String): Int {
         val seeds = parseSeeds1(puzzle)
         val maps = parseMaps(puzzle)
         val getLocationForSeed = composeMaps("seed", "location", maps)
-        return seeds.minOf { getLocationForSeed(it) }.toLong()
+        return seeds.minOf { getLocationForSeed(it) }.toInt()
     }
 
-    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle).toLong()
+    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle)
 
     /**
      * fast algorithm: apply the functions/mappings to ranges instead of individual values

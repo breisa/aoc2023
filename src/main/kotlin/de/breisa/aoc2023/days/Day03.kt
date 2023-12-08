@@ -5,7 +5,7 @@ import de.breisa.aoc2023.core.getResourceAsText
 /**
  * https://adventofcode.com/2023/day/3
  */
-class Day03: Day(
+class Day03: Day<Int>(
     number = 3,
     firstExample = """
         467..114..
@@ -22,7 +22,7 @@ class Day03: Day(
     actualPuzzle = getResourceAsText("/day03/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String): Long {
+    override fun solveFirstPart(puzzle: String): Int {
         val schematic = parseSchematic(puzzle)
         return parseSchematic(puzzle)
             .findAll(Regex("[^\\d\\.]"))
@@ -30,10 +30,10 @@ class Day03: Day(
             .filter { schematic.get(it).isDigit() }
             .map { schematic.getNumberStart(it) }
             .distinct()
-            .sumOf { schematic.getNumberAt(it) }.toLong()
+            .sumOf { schematic.getNumberAt(it) }
     }
 
-    override fun solveSecondPart(puzzle: String): Long {
+    override fun solveSecondPart(puzzle: String): Int {
         val schematic = parseSchematic(puzzle)
         var gearRatioSum = 0
         schematic.findAll(Regex("\\*")).forEach { gear ->
@@ -46,7 +46,7 @@ class Day03: Day(
                 gearRatioSum += adjacentNumbers.reduce(Int::times)
             }
         }
-        return gearRatioSum.toLong()
+        return gearRatioSum
     }
 
     private fun parseSchematic(schematic: String): Schematic {

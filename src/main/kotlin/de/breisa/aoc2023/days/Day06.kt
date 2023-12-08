@@ -9,7 +9,7 @@ import kotlin.math.sqrt
 /**
  * https://adventofcode.com/2023/day/6
  */
-class Day06: Day(
+class Day06: Day<Int>(
     number = 6,
     firstExample = """
         Time:      7  15   30
@@ -18,9 +18,9 @@ class Day06: Day(
     actualPuzzle = getResourceAsText("/day06/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String) = parseRaces(puzzle).map { countWinningRaces(it) }.reduce(Int::times).toLong()
+    override fun solveFirstPart(puzzle: String) = parseRaces(puzzle).map { countWinningRaces(it) }.reduce(Int::times)
 
-    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle).toLong()
+    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle)
 
     private fun solveSecondPartFast(puzzle: String): Int {
         val race = parseLongRace(puzzle)

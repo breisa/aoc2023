@@ -5,7 +5,7 @@ import de.breisa.aoc2023.core.getResourceAsText
 /**
  * https://adventofcode.com/2023/day/8
  */
-class Day08: Day(
+class Day08: Day<Long>(
     number = 8,
     firstExample = """
         RL

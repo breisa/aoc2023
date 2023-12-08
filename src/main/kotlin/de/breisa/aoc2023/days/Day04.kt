@@ -6,7 +6,7 @@ import kotlin.math.pow
 /**
  * https://adventofcode.com/2023/day/4
  */
-class Day04: Day(
+class Day04: Day<Int>(
     number = 4,
     firstExample = """
         Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
@@ -19,13 +19,13 @@ class Day04: Day(
     actualPuzzle = getResourceAsText("/day04/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String) =
+    override fun solveFirstPart(puzzle: String): Int =
         parseScratchCards(puzzle).map { card ->
             card.countCorrectNumbers()
-        }.sumOf { 2.0.pow(it - 1).toInt() }.toLong()
+        }.sumOf { 2.0.pow(it - 1).toInt() }
 
-    override fun solveSecondPart(puzzle: String): Long {
-        return secondFast(puzzle).toLong()
+    override fun solveSecondPart(puzzle: String): Int {
+        return secondFast(puzzle)
     }
 
     private fun secondNaive(puzzle: String): Int {

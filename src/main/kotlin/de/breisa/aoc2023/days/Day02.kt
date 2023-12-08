@@ -5,7 +5,7 @@ import de.breisa.aoc2023.core.getResourceAsText
 /**
  * https://adventofcode.com/2023/day/2
  */
-class Day02: Day(
+class Day02: Day<Int>(
     number = 2,
     firstExample = """
         Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
@@ -17,17 +17,17 @@ class Day02: Day(
     actualPuzzle = getResourceAsText("/day02/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String): Long {
+    override fun solveFirstPart(puzzle: String): Int {
         val actualAmount = CubeAmount(red = 12, green = 13, blue = 14)
         return parseGameRecords(puzzle).filterNot { game ->
             game.samples.any { sample ->
                 sample.red > actualAmount.red || sample.green > actualAmount.green || sample.blue > actualAmount.blue
             }
-        }.sumOf { it.id }.toLong()
+        }.sumOf { it.id }
     }
 
-    override fun solveSecondPart(puzzle: String): Long = parseGameRecords(puzzle).sumOf { game ->
-        game.samples.maxOf { it.red } * game.samples.maxOf { it.green } * game.samples.maxOf { it.blue }.toLong()
+    override fun solveSecondPart(puzzle: String): Int = parseGameRecords(puzzle).sumOf { game ->
+        game.samples.maxOf { it.red } * game.samples.maxOf { it.green } * game.samples.maxOf { it.blue }
     }
 
     private fun parseGameRecords(puzzle: String): List<Game> {

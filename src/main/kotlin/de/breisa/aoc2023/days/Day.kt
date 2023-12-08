@@ -2,7 +2,7 @@ package de.breisa.aoc2023.days
 
 import kotlin.time.measureTimedValue
 
-abstract class Day(
+abstract class Day<T>(
     val number: Int,
     val firstExample: String,
     val secondExample: String = firstExample,
@@ -21,7 +21,7 @@ abstract class Day(
         println("the second solution of the actual puzzle is $secondActualSolution ($secondDuration)")
     }
 
-    abstract fun solveFirstPart(puzzle: String): Long
+    abstract fun solveFirstPart(puzzle: String): T
 
-    abstract fun solveSecondPart(puzzle: String): Long
+    abstract fun solveSecondPart(puzzle: String): T
 }
