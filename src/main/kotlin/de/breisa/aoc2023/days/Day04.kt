@@ -22,10 +22,10 @@ class Day04: Day(
     override fun solveFirstPart(puzzle: String) =
         parseScratchCards(puzzle).map { card ->
             card.countCorrectNumbers()
-        }.sumOf { 2.0.pow(it - 1).toInt() }
+        }.sumOf { 2.0.pow(it - 1).toInt() }.toLong()
 
-    override fun solveSecondPart(puzzle: String): Int {
-        return secondFast(puzzle)
+    override fun solveSecondPart(puzzle: String): Long {
+        return secondFast(puzzle).toLong()
     }
 
     private fun secondNaive(puzzle: String): Int {

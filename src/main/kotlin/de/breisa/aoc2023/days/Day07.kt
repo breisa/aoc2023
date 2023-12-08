@@ -17,11 +17,11 @@ class Day07: Day(
     actualPuzzle = getResourceAsText("/day07/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String): Int = CamelCards().parseHands(puzzle).totalWinnings()
+    override fun solveFirstPart(puzzle: String): Long = CamelCards().parseHands(puzzle).totalWinnings()
 
-    override fun solveSecondPart(puzzle: String): Int = CamelCardsWithJoker().parseHands(puzzle).totalWinnings()
+    override fun solveSecondPart(puzzle: String): Long = CamelCardsWithJoker().parseHands(puzzle).totalWinnings()
 
-    private fun List<Hand>.totalWinnings(): Int = sorted().mapIndexed { index, hand -> (index + 1) * hand.bid }.sum()
+    private fun List<Hand>.totalWinnings() = sorted().mapIndexed { index, hand -> (index + 1) * hand.bid }.sum().toLong()
 
     private class Card(val symbol: Char, val ordinal: Int) : Comparable<Card> {
         override fun compareTo(other: Card): Int = this.ordinal.compareTo(other.ordinal)

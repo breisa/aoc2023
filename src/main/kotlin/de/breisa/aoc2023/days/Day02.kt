@@ -17,17 +17,17 @@ class Day02: Day(
     actualPuzzle = getResourceAsText("/day02/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String): Int {
+    override fun solveFirstPart(puzzle: String): Long {
         val actualAmount = CubeAmount(red = 12, green = 13, blue = 14)
         return parseGameRecords(puzzle).filterNot { game ->
             game.samples.any { sample ->
                 sample.red > actualAmount.red || sample.green > actualAmount.green || sample.blue > actualAmount.blue
             }
-        }.sumOf { it.id }
+        }.sumOf { it.id }.toLong()
     }
 
-    override fun solveSecondPart(puzzle: String): Int = parseGameRecords(puzzle).sumOf { game ->
-        game.samples.maxOf { it.red } * game.samples.maxOf { it.green } * game.samples.maxOf { it.blue }
+    override fun solveSecondPart(puzzle: String): Long = parseGameRecords(puzzle).sumOf { game ->
+        game.samples.maxOf { it.red } * game.samples.maxOf { it.green } * game.samples.maxOf { it.blue }.toLong()
     }
 
     private fun parseGameRecords(puzzle: String): List<Game> {

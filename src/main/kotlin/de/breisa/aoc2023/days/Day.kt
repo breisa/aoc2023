@@ -21,7 +21,7 @@ abstract class Day(
         println("the second solution of the actual puzzle is $secondActualSolution ($secondDuration)")
     }
 
-    abstract fun solveFirstPart(puzzle: String): Int
+    abstract fun solveFirstPart(puzzle: String): Long
 
-    abstract fun solveSecondPart(puzzle: String): Int
+    abstract fun solveSecondPart(puzzle: String): Long
 }

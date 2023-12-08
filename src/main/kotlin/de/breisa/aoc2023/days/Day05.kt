@@ -46,14 +46,14 @@ class Day05: Day(
     actualPuzzle = getResourceAsText("/day05/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String): Int {
+    override fun solveFirstPart(puzzle: String): Long {
         val seeds = parseSeeds1(puzzle)
         val maps = parseMaps(puzzle)
         val getLocationForSeed = composeMaps("seed", "location", maps)
-        return seeds.minOf { getLocationForSeed(it) }.toInt()
+        return seeds.minOf { getLocationForSeed(it) }.toLong()
     }
 
-    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle)
+    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle).toLong()
 
     /**
      * fast algorithm: apply the functions/mappings to ranges instead of individual values

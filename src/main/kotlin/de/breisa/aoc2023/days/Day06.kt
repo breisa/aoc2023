@@ -18,9 +18,9 @@ class Day06: Day(
     actualPuzzle = getResourceAsText("/day06/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String) = parseRaces(puzzle).map { countWinningRaces(it) }.reduce(Int::times)
+    override fun solveFirstPart(puzzle: String) = parseRaces(puzzle).map { countWinningRaces(it) }.reduce(Int::times).toLong()
 
-    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle)
+    override fun solveSecondPart(puzzle: String) = solveSecondPartFast(puzzle).toLong()
 
     private fun solveSecondPartFast(puzzle: String): Int {
         val race = parseLongRace(puzzle)

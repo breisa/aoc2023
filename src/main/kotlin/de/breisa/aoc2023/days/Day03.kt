@@ -22,7 +22,7 @@ class Day03: Day(
     actualPuzzle = getResourceAsText("/day03/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String): Int {
+    override fun solveFirstPart(puzzle: String): Long {
         val schematic = parseSchematic(puzzle)
         return parseSchematic(puzzle)
             .findAll(Regex("[^\\d\\.]"))
@@ -30,10 +30,10 @@ class Day03: Day(
             .filter { schematic.get(it).isDigit() }
             .map { schematic.getNumberStart(it) }
             .distinct()
-            .sumOf { schematic.getNumberAt(it) }
+            .sumOf { schematic.getNumberAt(it) }.toLong()
     }
 
-    override fun solveSecondPart(puzzle: String): Int {
+    override fun solveSecondPart(puzzle: String): Long {
         val schematic = parseSchematic(puzzle)
         var gearRatioSum = 0
         schematic.findAll(Regex("\\*")).forEach { gear ->
@@ -46,7 +46,7 @@ class Day03: Day(
                 gearRatioSum += adjacentNumbers.reduce(Int::times)
             }
         }
-        return gearRatioSum
+        return gearRatioSum.toLong()
     }
 
     private fun parseSchematic(schematic: String): Schematic {

@@ -25,13 +25,13 @@ class Day01: Day(
     actualPuzzle = getResourceAsText("/day01/puzzle.txt")
 ) {
 
-    override fun solveFirstPart(puzzle: String): Int = puzzle
+    override fun solveFirstPart(puzzle: String): Long = puzzle
         .lines()
         .map { it.replace(Regex("\\D"), "") }
         .filterNot { it == "" }
-        .sumOf { (it.first().digitToInt() * 10) + it.last().digitToInt() }
+        .sumOf { (it.first().digitToInt() * 10) + it.last().digitToInt() }.toLong()
 
-    override fun solveSecondPart(puzzle: String): Int = puzzle
+    override fun solveSecondPart(puzzle: String): Long = puzzle
         .lines()
         .filterNot { it == "" }
         .sumOf { solveSecondPartLine(it) }
@@ -41,11 +41,11 @@ class Day01: Day(
         "1" to 1, "2" to 2, "3" to 3, "4" to 4, "5" to 5, "6" to 6, "7" to 7, "8" to 8, "9" to 9,
     )
 
-    private fun solveSecondPartLine(line: String): Int {
+    private fun solveSecondPartLine(line: String): Long {
         val first = digitTextToValue[line.findAnyOf(digitTextToValue.keys)?.second]
         val last = digitTextToValue[line.findLastAnyOf(digitTextToValue.keys)?.second]
         if (first == null || last == null) error("no digit in line '$line'")
-        return first * 10 + last
+        return (first * 10 + last).toLong()
     }
 
 }
