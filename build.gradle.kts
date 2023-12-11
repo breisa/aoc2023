@@ -3,7 +3,7 @@ plugins {
     application
 }
 
-group = "org.example"
+group = "de.breisa.aoc2023"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -24,5 +24,5 @@ kotlin {
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("de.breisa.aoc2023.core.MainKt")
 }

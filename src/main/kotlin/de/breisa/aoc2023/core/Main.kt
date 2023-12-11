@@ -10,14 +10,14 @@ private val days = listOf(Day01(), Day02(), Day03(), Day04(), Day05(), Day06(), 
 
 fun main(args: Array<String>) = Main().main(args)
 
-class Main: CliktCommand(name = "adventofcode.jar") {
-    val day by option("-d", "--day", help = "Number of the day to execute")
+class Main: CliktCommand(name = "AdventOfCode2023") {
+    private val day by option("-d", "--day", help = "Number of the day to execute")
         .int().restrictTo(1..24)
         .check("this day is not implemented yet") { n -> n in days.map { it.number } }
 
-    val all by option("-a", "--all", help = "Execute all days").flag(default = false)
+    private val all by option("-a", "--all", help = "Execute all days").flag(default = false)
 
-    val latest by option("-l", "--latest", help = "Execute the latest day").flag(default = false)
+    private val latest by option("-l", "--latest", help = "Execute the latest day").flag(default = false)
 
     override fun run() {
         if (all) {
