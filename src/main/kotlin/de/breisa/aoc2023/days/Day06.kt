@@ -1,6 +1,6 @@
 package de.breisa.aoc2023.days
 
-import de.breisa.aoc2023.core.getResourceAsText
+import de.breisa.aoc2023.utils.getResourceAsText
 import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.roundToInt
