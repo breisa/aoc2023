@@ -13,6 +13,8 @@ Solutions:
 [08](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day08.kt)
 [09](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day09.kt)
 [10](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day10.kt)
+[11](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day11.kt)
+
 
 Run the solution of a single day using
 ```./gradlew run --args='--day 24'``` or use one of the other options:
