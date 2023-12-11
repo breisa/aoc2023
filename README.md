@@ -14,6 +14,17 @@ Solutions:
 [09](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day09.kt)
 [10](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day10.kt)
 
+Run the solution of a single day using
+```./gradlew run --args='--day 24'``` or use one of the other options:
+```
+Usage: AdventOfCode2023 [<options>]
+
+Options:
+  -d, --day=<int>  Number of the day to execute
+  -a, --all        Execute all days
+  -l, --latest     Execute the latest day
+  -h, --help       Show this message and exit
+```
 
 ```
          |
