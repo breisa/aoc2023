@@ -54,4 +54,8 @@ class Grid<T>(data: Iterable<Iterable<T>>) {
 data class GridPosition(val x: Int, val y: Int) {
     val row get() = y
     val column get() = x
+    val north get() = copy(y = y-1)
+    val east get() = copy(x = x+1)
+    val south get() = copy(y = y+1)
+    val west get() = copy(x = x-1)
 }
