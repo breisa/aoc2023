@@ -14,6 +14,7 @@ Solutions:
 [09](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day09.kt)
 [10](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day10.kt)
 [11](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day11.kt)
+[12](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day12.kt)
 
 
 Run the solution of a single day using
