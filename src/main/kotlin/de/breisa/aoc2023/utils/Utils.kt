@@ -17,3 +17,17 @@ fun <T>List<List<T>>.transpose(): List<List<T>> = this.first().indices.map { col
  * Returns the sublist between two indices including the lower and excluding the higher one.
  */
 fun <T>List<T>.subListBetween(index1: Int, index2: Int) = listOf(index1, index2).sorted().let { (a, b) -> subList(a, b) }
+
+/**
+ * Splits a list at the first element matching a given predicate.
+ */
+fun <T>List<T>.splitAtFirstOrNull(predicate: (T)->Boolean): Pair<List<T>, List<T>>? {
+    val first = this.indexOfFirst { predicate(it) }
+    if (first == -1) return null
+    return Pair(this.take(first), this.drop(first + 1))
+}
+
+/**
+ * Repeats a list to form a new list.
+ */
+fun <T>List<T>.repeat(n: Int) = (0..< size * n).map { this[it % size] }
