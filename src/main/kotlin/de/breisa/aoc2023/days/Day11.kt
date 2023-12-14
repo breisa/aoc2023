@@ -26,13 +26,13 @@ class Day11: Day<Long>(
     actualPuzzle = getResourceAsText("/day11/puzzle.txt")
 ) {
     override fun solveFirstPart(puzzle: String): Long {
-        val grid = Grid.parse(puzzle, String::first).expandGrid()
+        val grid = Grid.parse(puzzle, cellParser = String::first).expandGrid()
         val galaxies = findGalaxyPositions(grid)
         return galaxies.getUniquePairs(grid).sumOf { (g1, g2) -> (abs(g1.x - g2.x) + abs(g1.y - g2.y)).toLong() }
     }
 
     override fun solveSecondPart(puzzle: String): Long {
-        val grid = Grid.parse(puzzle, String::first)
+        val grid = Grid.parse(puzzle, cellParser = String::first)
         val galaxies = findGalaxyPositions(grid)
         val rowWeights = grid.rows.map { r -> r.all { it == '.' } }.map { empty -> if (empty) 1000000 else 1 }
         val columnWeights = grid.columns.map { c -> c.all { it == '.' } }.map { empty -> if (empty) 1000000 else 1 }

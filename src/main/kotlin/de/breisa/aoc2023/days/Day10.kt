@@ -29,10 +29,10 @@ class Day10: Day<Int>(
         """.trimIndent(),
     actualPuzzle = getResourceAsText("/day10/puzzle.txt")
 ) {
-    override fun solveFirstPart(puzzle: String): Int = Grid.parse(puzzle, String::first).findLoop().size / 2
+    override fun solveFirstPart(puzzle: String): Int = Grid.parse(puzzle, cellParser = String::first).findLoop().size / 2
 
     override fun solveSecondPart(puzzle: String): Int {
-        val smallGrid = Grid.parse(puzzle, String::first)
+        val smallGrid = Grid.parse(puzzle, cellParser = String::first)
         // remove everything besides the loop
         val loop = smallGrid.findLoop().toSet()
         smallGrid.positions.filter { it !in loop }.forEach { smallGrid.set(it, '.') }
@@ -101,7 +101,7 @@ class Day10: Day<Int>(
 
     private fun blowUp(smallGrid: Grid<Char>): Grid<Char> {
         val bigPuzzle = (".".repeat(smallGrid.width*3) + "\n").repeat(smallGrid.height*3).dropLast(1)
-        val bigGrid = Grid.parse(bigPuzzle, String::first)
+        val bigGrid = Grid.parse(bigPuzzle, cellParser = String::first)
         smallGrid.positionedValues.forEach { (position, smallChar) ->
             val bigChar = blowUp(smallChar)
             position.getBlownUpPositions().forEach { subPos ->

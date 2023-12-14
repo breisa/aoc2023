@@ -41,7 +41,7 @@ class Grid<T>(data: Iterable<Iterable<T>>) {
     override fun toString(): String = toString(includeHeader = true)
 
     companion object {
-        fun <T>parse(data: String, cellParser: (String)->T, columnSeparator: String = "", rowSeparator: String = "\n"): Grid<T> {
+        fun <T>parse(data: String, columnSeparator: String = "", rowSeparator: String = "\n", cellParser: (String)->T): Grid<T> {
             return Grid(data.split(rowSeparator).map { row ->
                 var cells = row.split(columnSeparator)
                 if (columnSeparator == "") cells = cells.drop(1).dropLast(1)
