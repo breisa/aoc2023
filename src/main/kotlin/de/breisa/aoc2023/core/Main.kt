@@ -22,15 +22,23 @@ class Main: CliktCommand(name = "AdventOfCode2023") {
 
     private val latest by option("-l", "--latest", help = "Execute the latest day").flag(default = false)
 
+    private val benchmark by option("-b", "--benchmark", help = "Benchmark the runtime of the selected days").flag(default = false)
+
     override fun run() {
         if (all) {
-            days.forEach { it.solvePuzzles() }
+            execute(days)
         } else if (latest) {
-            days.last().solvePuzzles()
+            execute(listOf(days.last()))
         } else if (day != null) {
-            days.first { it.number == day }.solvePuzzles()
+            execute(listOf(days.first { it.number == day }))
         } else {
             echoFormattedHelp()
+        }
+    }
+
+    private fun execute(days: List<Day<out Any>>) {
+        days.forEach { day ->
+            if (benchmark) day.benchmarkImplementation() else day.solvePuzzles()
         }
     }
 }

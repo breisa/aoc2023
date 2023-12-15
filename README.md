@@ -29,6 +29,7 @@ Options:
   -d, --day=<int>  Number of the day to execute
   -a, --all        Execute all days
   -l, --latest     Execute the latest day
+  -b, --benchmark  Benchmark the runtime of the selected days
   -h, --help       Show this message and exit
 ```
 
