@@ -21,7 +21,7 @@ Solutions:
 
 
 Run the solution of a single day using
-```./gradlew run --args='--day 24'``` or use one of the other options:
+```./gradlew run -q --console=plain --args='--day 24'``` or use one of the other options:
 ```
 Usage: AdventOfCode2023 [<options>]
 
