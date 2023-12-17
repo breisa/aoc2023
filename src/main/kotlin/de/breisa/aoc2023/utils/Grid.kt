@@ -41,6 +41,8 @@ class Grid<T>(data: Iterable<Iterable<T>>) {
 
     fun clone() = Grid(grid)
 
+    fun copy(cellCopier: (T)->T): Grid<T> = Grid(rows.map { row -> row.map { cell -> cellCopier(cell) } })
+
     /**
      * Returns all positions of the grid in the specified order.
      *
