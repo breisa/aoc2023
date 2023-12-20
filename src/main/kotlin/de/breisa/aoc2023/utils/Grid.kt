@@ -65,6 +65,18 @@ class Grid<T>(data: Iterable<Iterable<T>>) {
 
     private fun range(from: Int, to: Int) = if (from <= to) from..to else from downTo to
 
+    fun floodFill(start: GridPosition, infill: T, fillPredicate: (T)->Boolean) {
+        val toFill = mutableListOf(start)
+        while (toFill.isNotEmpty()) {
+            val current = toFill.removeFirst()
+            if (!fillPredicate(get(current))) continue
+            set(current, infill)
+            listOf(current.north, current.east, current.south, current.west)
+                .filter { contains(it) }
+                .forEach { toFill.add(it) }
+        }
+    }
+
     fun toString(columnSeparator: String = ", ", rowSeparator: String = "\n", includeHeader: Boolean = false): String {
         return (if (includeHeader) "Grid(width=$width, height=$height)\n" else "") +
                 grid.joinToString(rowSeparator) { row -> row.joinToString(columnSeparator) }
@@ -80,6 +92,9 @@ class Grid<T>(data: Iterable<Iterable<T>>) {
                 cells.map(cellParser)
             })
         }
+
+        fun <T>ofSize(width: Int, height: Int, cellInitializer:(GridPosition)->T): Grid<T> =
+            Grid((0..<height).map { row -> (0..<width).map { column -> cellInitializer(GridPosition(column, row)) } })
     }
 }
 
@@ -98,6 +113,8 @@ data class GridPosition(val x: Int, val y: Int) {
         Direction.SOUTH -> south
         Direction.WEST  -> west
     }
+
+    fun moveBy(xOffset: Int = 0, yOffset: Int = 0) = copy(x = x + xOffset, y = y + yOffset)
 }
 
 enum class Direction {
