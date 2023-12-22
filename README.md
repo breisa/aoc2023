@@ -22,6 +22,7 @@ Solutions:
 17
 [18](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day18.kt)
 [19](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day19.kt)
+[20](https://github.com/breisa/aoc2023/tree/main/src/main/kotlin/de/breisa/aoc2023/days/Day20.kt)
 
 
 Run the solution of a single day using
