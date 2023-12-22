@@ -31,3 +31,12 @@ fun <T>List<T>.splitAtFirstOrNull(predicate: (T)->Boolean): Pair<List<T>, List<T
  * Repeats a list to form a new list.
  */
 fun <T>List<T>.repeat(n: Int) = (0..< size * n).map { this[it % size] }
+
+/**
+ * Calculates the least common multiple of a list of Longs.
+ */
+fun List<Long>.leastCommonMultiple() = fold(1L, ::lcm)
+
+private fun lcm(a: Long, b: Long): Long = a * (b / gcd(a, b))
+
+private fun gcd(a: Long, b: Long): Long = if (b == 0L) a else gcd(b, a % b)

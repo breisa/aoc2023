@@ -1,6 +1,7 @@
 package de.breisa.aoc2023.days
 
 import de.breisa.aoc2023.utils.getResourceAsText
+import de.breisa.aoc2023.utils.leastCommonMultiple
 
 /**
  * https://adventofcode.com/2023/day/8
@@ -62,13 +63,6 @@ class Day08: Day<Long>(
             !endCondition(currentNode)
         }.count() + 1L
     }
-
-    private fun List<Long>.leastCommonMultiple() = fold(1L, ::lcm)
-
-    private fun lcm(a: Long, b: Long): Long = a * (b / gcd(a, b))
-
-    private fun gcd(a: Long, b: Long): Long = if (b == 0L) a else gcd(b, a % b)
-
 
     private fun parseInstructions(puzzle: String): Triple<Sequence<Char>, Set<String>, Map<String, String>> =
         puzzle.split("\n\n").let { (instructions, graph) ->
